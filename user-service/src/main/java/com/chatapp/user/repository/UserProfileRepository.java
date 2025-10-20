@@ -12,6 +12,7 @@ import java.util.Optional;
 @Repository
 public interface UserProfileRepository extends JpaRepository<UserProfile, String> {
     Optional<UserProfile> findByUserId(String userId);
+    boolean existsByUserId(String userId);
     
     @Query("SELECT up FROM UserProfile up WHERE up.userId IN :userIds")
     List<UserProfile> findByUserIds(@Param("userIds") List<String> userIds);
