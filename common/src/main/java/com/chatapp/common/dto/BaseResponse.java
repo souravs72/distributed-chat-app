@@ -22,36 +22,36 @@ public class BaseResponse<T> {
     private String traceId;
 
     public static <T> BaseResponse<T> success(T data) {
-        return BaseResponse.<T>builder()
-                .success(true)
-                .data(data)
-                .timestamp(LocalDateTime.now())
-                .build();
+        BaseResponse<T> response = new BaseResponse<>();
+        response.success = true;
+        response.data = data;
+        response.timestamp = LocalDateTime.now();
+        return response;
     }
 
     public static <T> BaseResponse<T> success(T data, String message) {
-        return BaseResponse.<T>builder()
-                .success(true)
-                .message(message)
-                .data(data)
-                .timestamp(LocalDateTime.now())
-                .build();
+        BaseResponse<T> response = new BaseResponse<>();
+        response.success = true;
+        response.message = message;
+        response.data = data;
+        response.timestamp = LocalDateTime.now();
+        return response;
     }
 
     public static <T> BaseResponse<T> error(String message) {
-        return BaseResponse.<T>builder()
-                .success(false)
-                .message(message)
-                .timestamp(LocalDateTime.now())
-                .build();
+        BaseResponse<T> response = new BaseResponse<>();
+        response.success = false;
+        response.message = message;
+        response.timestamp = LocalDateTime.now();
+        return response;
     }
 
     public static <T> BaseResponse<T> error(String message, String errorCode) {
-        return BaseResponse.<T>builder()
-                .success(false)
-                .message(message)
-                .errorCode(errorCode)
-                .timestamp(LocalDateTime.now())
-                .build();
+        BaseResponse<T> response = new BaseResponse<>();
+        response.success = false;
+        response.message = message;
+        response.errorCode = errorCode;
+        response.timestamp = LocalDateTime.now();
+        return response;
     }
 }

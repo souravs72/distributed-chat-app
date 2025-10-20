@@ -20,7 +20,6 @@
         <module>presence-service</module>
         <module>chat-service</module>
         <module>websocket-service</module>
-        <module>message-broker</module>
         <module>media-service</module>
         <module>notification-service</module>
         <module>common</module>
