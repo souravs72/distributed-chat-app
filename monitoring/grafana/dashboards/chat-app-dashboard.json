@@ -1,0 +1,81 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Chat Application Dashboard",
+    "tags": ["chat", "microservices"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "API Gateway - Request Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(spring_gateway_requests_total[5m])",
+            "legendFormat": "{{route}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Requests/sec"
+          }
+        ],
+        "xAxes": [
+          {
+            "label": "Time"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Service Health",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "up{job=~\"api-gateway|auth-service|user-service|presence-service|chat-service|websocket-service\"}",
+            "legendFormat": "{{job}}"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "JVM Memory Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "jvm_memory_used_bytes{area=\"heap\",job=~\"api-gateway|auth-service|user-service|presence-service|chat-service|websocket-service\"}",
+            "legendFormat": "{{job}} - {{instance}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Active WebSocket Connections",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "websocket_connections_active",
+            "legendFormat": "Active Connections"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Message Processing Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(chat_messages_processed_total[5m])",
+            "legendFormat": "Messages/sec"
+          }
+        ]
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "5s"
+  }
+}
