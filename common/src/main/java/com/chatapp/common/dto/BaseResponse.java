@@ -54,4 +54,9 @@ public class BaseResponse<T> {
         response.timestamp = LocalDateTime.now();
         return response;
     }
+
+    // Manual getter for success field to ensure compatibility
+    public boolean isSuccess() {
+        return success;
+    }
 }

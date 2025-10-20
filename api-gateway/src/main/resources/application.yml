@@ -13,11 +13,6 @@ spring:
             - Path=/api/auth/**
           filters:
             - StripPrefix=2
-            - name: RateLimit
-              args:
-                capacity: 100
-                refillTokens: 100
-                refillDuration: 1
 
         - id: user-service
           uri: lb://user-service
