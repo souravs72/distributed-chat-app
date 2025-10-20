@@ -1,0 +1,17 @@
+format: sarif
+output: trivy-results.sarif
+severity: CRITICAL,HIGH,MEDIUM
+vuln-type: os,library
+security-checks: vuln,config
+ignore-unfixed: false
+skip-dirs:
+  - .git
+  - node_modules
+  - target
+  - build
+  - .m2
+skip-files:
+  - "*.log"
+  - "*.tmp"
+  - "*.cache"
+timeout: 5m
